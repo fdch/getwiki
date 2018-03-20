@@ -1,0 +1,21 @@
+#! /usr/bin/python
+import json
+import sys
+
+json_file=sys.argv[1]
+target_file=sys.argv[2]
+cube='1'
+s=''
+json_data=open(json_file)
+data = json.load(json_data)
+# print data['query']
+file = open(target_file,'w')
+for k in data['query']['pages']:
+	 for i in k['revisions']:
+	 	for j in i['content']:
+	 		file.write(j.encode('utf-8'))
+if (k==0):
+	quit(1)
+file.close()
+json_data.close()
+quit()

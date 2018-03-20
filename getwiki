@@ -1,0 +1,23 @@
+#!/bin/bash
+if [[ $1 ]] ; then
+	TITLES=$1
+else
+	exit 1
+fi
+if [[ $2 ]] ; then
+	FORMAT=$2
+else
+	FORMAT=json
+fi
+# This performs a php call using wikipedia api
+# for more info check https://www.mediawiki.org/wiki/API:Main_page
+FVERSION=2
+ACTION=query
+WEBSITE=https://en.wikipedia.org/w/api.php
+PROP=revisions
+RVPROP=content
+
+curl "$WEBSITE?action=$ACTION&titles=$TITLES&prop=$PROP&rvprop=$RVPROP&format=$FORMAT&formatversion=$FVERSION" > $TITLES.$FORMAT
+# echo "waiting 1 second..."
+# sleep 1
+exit 0
