@@ -1,0 +1,12 @@
+#! /usr/bin/python
+
+import urllib2
+from BeautifulSoup import BeautifulSoup
+
+url = "http://www.prefixsuffix.com/rootchart.php"
+soup = BeautifulSoup(urllib2.urlopen(url).read())
+
+for row in soup.findAll('table')[0].tbody.findAll('tr'):
+    first_column = row.findAll('th')[0].contents
+    # third_column = row.findAll('td')[2].contents
+    print first_column

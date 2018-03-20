@@ -29,6 +29,7 @@ COUNT=$(wc -w < $TARGET | sed 's/ //g')
 if [[ $COUNT -gt "1" ]] ; then
 	rm $TARGET.$FORMAT
 	rm $TARGET.temp
+	# sort -u $TARGET
 else
 	rm $TARGET
 	echo "Nothing was found in $TARGET"
